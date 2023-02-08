@@ -1,7 +1,18 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog
-from tkcalendar import Calendar, DateEntry
+from tkcalendar import DateEntry
+import datetime
+
+def kiroku_hozon(self):
+    ini_fname = datetime.date.today().strftime("%Y-%m-%d") + ".txt"
+    file = filedialog.asksaveasfile(defaultextension=".txt", initialfile=ini_fname)
+    if file:
+        # テキストの内容を読み込む
+        text_content = self.txt_4.get("1.0", tk.END)
+        file.write(text_content)
+        file.close()
+        self.txt_4.delete("1.0", tk.END)
 
 # トップページ
 class MainPage(ttk.Frame):
@@ -48,7 +59,6 @@ class NewPage(ttk.Frame):
 
     # ファイル保存
     def save_file(self):
-#         ftypes = [("テキスト", ".txt")]
         ini_fname = self.date.get_date().strftime('%Y-%m-%d') + ".txt"
         file = filedialog.asksaveasfile(defaultextension=".txt", initialfile=ini_fname)
 
