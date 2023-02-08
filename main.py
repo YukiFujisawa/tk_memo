@@ -4,16 +4,6 @@ from tkinter import filedialog
 from tkcalendar import DateEntry
 import datetime
 
-def kiroku_hozon(self):
-    ini_fname = datetime.date.today().strftime("%Y-%m-%d") + ".txt"
-    file = filedialog.asksaveasfile(defaultextension=".txt", initialfile=ini_fname)
-    if file:
-        # テキストの内容を読み込む
-        text_content = self.txt_4.get("1.0", tk.END)
-        file.write(text_content)
-        file.close()
-        self.txt_4.delete("1.0", tk.END)
-
 # トップページ
 class MainPage(ttk.Frame):
     def __init__(self, master):
